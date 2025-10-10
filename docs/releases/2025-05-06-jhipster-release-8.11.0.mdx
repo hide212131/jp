@@ -1,0 +1,101 @@
+---
+title: リリース8.11.0
+slug: 2025年5月6日付のJHipsterリリース8.11.0のHTMLページ
+displayed_sidebar: ドキュメントサイドバー
+sidebar_class_name: 隠された
+---
+
+# JHipster v8.11.0 リリース
+
+これはJHipster v8のマイナーリリースです。
+
+本リリースには、[8.10.0リリース](/2025/03/31/jhipster-release-8.10.0.html)以降、メインブランチでクローズされた[306件のイシューとプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.11.0)が含まれています。
+
+## 新機能
+
+* Spring Boot 3.4.5へのアップグレード ([#29314](https://github.com/jhipster/generator-jhipster/pull/29314))
+* JWTトークンへのユーザーIDの追加 ([#29108](https://github.com/jhipster/generator-jhipster/pull/29108))
+* Gradle 8.14へのアップグレード ([#29325](https://github.com/jhipster/generator-jhipster/pull/29325))
+* Java 24のサポートを追加 ([#29342](https://github.com/jhipster/generator-jhipster/pull/29342))
+* Node 22.15.0へのアップグレード ([#29305](https://github.com/jhipster/generator-jhipster/pull/29305))
+* ヘブライ語の追加 ([#29324](https://github.com/jhipster/generator-jhipster/pull/29324))
+* 多数の内部およびクリーンコードの改善（[@qmonmert](https://github.com/qmonmert)に感謝👊）
+
+## クローズされたチケットとマージされたプルリクエスト
+
+詳細については、[GitHubの8.11.0リリースノート](https://github.com/jhipster/generator-jhipster/releases/tag/v8.11.0)をご覧ください。
+
+いつものように、**[クローズされたすべてのチケットとマージされたプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.11.0)を表示できます**。
+
+## インストール方法
+
+JHipster v8.11.0をインストールするには：
+
+```
+npm install -g generator-jhipster@8.11.0
+```
+
+JHipster Dockerイメージを使用しても利用可能です。これはソースコードから自動的にビルドされます。
+
+- [JHipster Online](https://start.jhipster.tech)
+- [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
+
+## アップグレード方法
+
+**自動アップグレード**
+
+自動アップグレードには、既存のアプリケーションで[JHipsterアップグレードサブジェネレーター](/upgrading-an-application/)を使用します。
+
+JHipsterのバージョンをアップグレードします：
+
+```
+npm update -g generator-jhipster
+```
+
+そして、アップグレードサブジェネレーターを実行します：
+
+```
+jhipster upgrade
+```
+
+より高度なアップグレード機能には、[migrateブループリント](https://github.com/jhipster/generator-jhipster-migrate)も使用できます。
+
+```
+npm i -g generator-jhipster-migrate
+jhipster-migrate
+```
+
+**手動アップグレード**
+
+手動アップグレードの場合、まずJHipsterのバージョンを次のようにアップグレードします：
+
+```
+npm update -g generator-jhipster
+```
+
+既存のプロジェクトがある場合、それは生成されたJHipsterのバージョンを使い続けます。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダーを削除し、次に以下を実行する必要があります：
+
+```
+jhipster
+```
+
+JHipster 8.0以降、このコマンドはプロジェクトとそのすべてのエンティティを更新します。
+
+エンティティサブジェネレーターを再度実行することで、エンティティを1つずつ更新することもできます。例えば、エンティティ名が_Foo_の場合、次を使用します：
+
+```
+jhipster entity Foo --single-entity
+```
+
+## ヘルプとバグ
+
+本リリースで何か問題を見つけた場合は、遠慮なく以下を行ってください：
+
+- [バグトラッカー](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加する
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)で質問を投稿する
+- [GitHub](https://github.com/jhipster/generator-jhipster/discussions)で新しいディスカッションを作成する
+
+抱えている問題が緊急のバグまたはセキュリティ問題である場合は、以下を行ってください：
+
+- Twitterで[@jhipster](https://twitter.com/jhipster)に連絡する
