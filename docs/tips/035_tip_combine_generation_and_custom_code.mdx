@@ -96,3 +96,78 @@ providers: [
 ### 短所
 
 - ファイルの重複が発生します。
+
+[MOCK] - File duplication
+[MOCK] 
+[MOCK] ## Alternative Side-by-Side Approach
+[MOCK] 
+[MOCK] This approach aims to add functionality to an existing JHipster application with minimal changes to the generated code.
+[MOCK] 
+[MOCK] ### Repository Tier
+[MOCK] 
+[MOCK] Create your repository interface with all custom methods in a separate custom package. This approach ensures that the generated repository code remains untouched, while your custom logic is organized and maintainable.
+[MOCK] 
+[MOCK] ### Service Tier
+[MOCK] 
+[MOCK] There are three main approaches for adding custom code at this tier:
+[MOCK] 
+[MOCK] Aspect-Oriented Programming (AOP): 
+[MOCK] 
+[MOCK] AOP allows you to introduce cross-cutting concerns such as logging, security, or transaction management without altering the core business logic. This separation of concerns helps maintain cleaner and more modular code.
+[MOCK] 
+[MOCK] Event Listeners: 
+[MOCK] 
+[MOCK] If the new functionality is triggered by specific events in the application (e.g., after saving a Foo entity), you can use Spring's event listener mechanism. This keeps the core logic clean, though it may make the execution flow harder to trace.
+[MOCK] 
+[MOCK] Decorator Pattern: 
+[MOCK] 
+[MOCK] To add new methods or modify existing behavior in a controlled manner, the decorator pattern is highly recommended. This pattern involves wrapping the original class with a decorator that provides additional functionality. It is clean, testable, and requires minimal changes to the original client classes, ensuring better maintainability.
+[MOCK] 
+[MOCK] Step 1: Create or extend the existing Interface depending on how your service classes are generated
+[MOCK] ```
+[MOCK] interface IFooService {
+[MOCK]     void newFeature();
+[MOCK]     //Existing method declarations
+[MOCK]    ...
+[MOCK] }
+[MOCK] ```
+[MOCK] Step 2: Extension through Composition
+[MOCK] ```
+[MOCK] @Service
+[MOCK] @Qualifier("entended") 
+[MOCK] public class ExtendedFooService implements FooService{
+[MOCK]     private final FooService existingFooService;
+[MOCK]     private final ExtendedFooRepository extendedFooRepository; // For new repository functionality
+[MOCK]    ...
+[MOCK] }
+[MOCK] ```
+[MOCK] Step 3: Add the @Primary to the existing service class and mark the existing service class as an interface implementation in step 1.
+[MOCK] 
+[MOCK] Step 4: Change the attribute type of the original service client to the interface created in step 1.
+[MOCK] 
+[MOCK] You can omit step 1 and adjust related changes in the following steps for a simplified implementation of this approach if you are unlikely to have multiple implementations of a service method or don't expect frequent changes in a service method.  
+[MOCK] 
+[MOCK] ### Web Tier
+[MOCK] 
+[MOCK] Create New Endpoint Controllers.
+[MOCK] ```
+[MOCK] @RestController
+[MOCK] @RequestMapping("/api/extended/foo")
+[MOCK] public class ExtendedFooController {
+[MOCK]     private final ExtendedFooService extendedFooService;
+[MOCK]     
+[MOCK]     public ExtendedFooController(ExtendedFooService extendedFooService) {
+[MOCK]         this.extendedFooService = extendedFooService;
+[MOCK]     }
+[MOCK] 
+[MOCK]     // New endpoints
+[MOCK]     @GetMapping("/new-feature")
+[MOCK]     public ResponseEntity<?> newFeature() {
+[MOCK]         // Implementation
+[MOCK]     }
+[MOCK] }
+[MOCK] ```
+[MOCK] 
+[MOCK] History from sir Antonio Goncalves here: https://www.youtube.com/watch?v=9WVpwIUEty0
+[MOCK] Deep dive Youtube Video here: https://youtu.be/aKvK-QpwaZA
+[MOCK] A sample repository with a side by side sample is available at: https://github.com/OsgiliathEnterprise/jhipster-side-by-side-sample
