@@ -31,10 +31,19 @@
     "fetch-jsonp": "^1.3.0",
     "plugin-image-zoom": "^1.2.0",
     "prism-react-renderer": "^2.4.1",
+<<<<<<< HEAD
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
+=======
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+>>>>>>> d369d6f4960071ed9d2dbb19b61f0b8c5e03ca06
     "react-icons": "^5.5.0",
+<<<<<<< HEAD
     "sass": "^1.95.0"
+=======
+    "sass": "^1.97.1"
+>>>>>>> d369d6f4960071ed9d2dbb19b61f0b8c5e03ca06
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.6.0",
