@@ -272,8 +272,13 @@ const sidebars: SidebarsConfig = {
         { type: 'doc', label: 'コード品質', id: 'tests-and-qa/code-quality' },
         {
           type: 'doc',
+<<<<<<< HEAD
           label: '依存関係の脆弱性チェック',
           id: 'tests-and-qa/dependency-vulnerabities-check',
+=======
+          label: 'Dependency Vulnerabilities Check',
+          id: 'tests-and-qa/dependency-vulnerabilities-check',
+>>>>>>> a2a9346b6a8e5319b1c849dbcdbf67d76f63e3d2
         },
         {
           type: 'category',
